@@ -27,6 +27,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center'
   },
   div1: {
+    padding: 20,
     margin: 'auto',
     marginRight: 'auto',
     // marginLeft: 450,
@@ -250,14 +251,8 @@ export const HomePage = () => {
                </Card>
              </Grid>
           ))}
-          
-      </Grid>
-        <br /><br />
-      {
-          isLoading && <CircularProgress color="secondary" />
-      }
-              <br />
-        <div className={classes.div1}>
+           <br /><br />
+              <div className={classes.div1}>
         <Button variant="outlined" onClick={prevPage} startIcon={<ArrowBack />}>
                 Anteriores
         </Button>
@@ -266,10 +261,12 @@ export const HomePage = () => {
                 Siguientes
         </Button>
         </div>
-        <br /><br />
-    </Container>
-    <Container>
-
+      </Grid>
+        
+      {
+          isLoading && <CircularProgress color="secondary" />
+      }
+              <br />
     </Container>
     <Modal
         aria-labelledby="transition-modal-title"
