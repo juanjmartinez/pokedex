@@ -27,10 +27,9 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center'
   },
   div1: {
-    padding: 20,
+    padding: 30,
     margin: 'auto',
     marginRight: 'auto',
-    // marginLeft: 450,
     display: 'flex', 
     alignItems: 'center',
     textAlign: 'center'
@@ -49,9 +48,10 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     maxWidth: 400,
-    height: '100%',
+    height: '105%',
     width: '100%',
-    background: 'linear-gradient(45deg, #ffffff 10%, #A9CCE3 90%)'
+    background: 'linear-gradient(45deg, #ffffff 10%, #A9CCE3 90%)',
+    paddingBottom: 50
   },
   card1: {
     maxWidth: 300,
@@ -102,7 +102,6 @@ export const HomePage = () => {
   const { isLoading, pokemons } = usePokemon();
   const [currentPage, setCurrentPage] = useState(0);
   const [search, setSearch] = useState('');
-  // const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [pokemonDetail, setPokemonDetail] = useState([]);
   const [experience, setExperience] = useState();
@@ -126,8 +125,6 @@ export const HomePage = () => {
 
       setOpen(true);
   }
-
-
 
   const getDetail = (data: any) => {
       setExperience(data.base_experience);
@@ -167,8 +164,10 @@ export const HomePage = () => {
         gamesName = gamesName + ', ' +  games[index].version.name;        
     }
 
-    for (let index = 0; index < held.length; index++) {
-        heldName = heldName + ', '; // + held[index].name;
+    if (held.length > 0) {
+      for (let index = 0; index < held.length; index++) {
+        heldName = heldName + ', ' + held[index].item.name;
+      }
     }
 
     for (let index = 0; index < moves.length; index++) {
@@ -221,7 +220,7 @@ export const HomePage = () => {
     <br />
     <TextField className={classes.input} defaultValue="Small"  fullWidth value={search} onChange={onSearchChange} placeholder="Buscar"/>
     <br /><br />
-      <Grid container spacing={2}>
+      <Grid container spacing={4}>
           {filterPokemons().map(({id, name, pic, url}) => (
                <Grid key={id} item xs={12} sm={3}>
                <Card className={classes.card} raised={true}>
