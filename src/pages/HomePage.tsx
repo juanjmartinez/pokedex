@@ -72,29 +72,14 @@ const useStyles = makeStyles(theme => ({
     background: 'linear-gradient(45deg, #ffffff 10%, #A9CCE3 90%)'
   },
   cardmedia: {
-    height: '90%',
-    width: '90%',
+    height: '80%',
+    width: '80%',
     paddingTop: '81.25%',
     borderRadius: '50%',
     margin: 'auto',
     background: '#ffffff',
     alignItems: 'center'
-  },
-  cardmedia1: {
-    height: 200,
-    width: 200,
-    paddingTop: '81.25%',
-    margin: 'auto',
-    alignItems: 'center'
-  },
-  cardmedia2: {
-    height: 120,
-    width: 120,
-    paddingTop: '10.25%',
-    margin: 'auto',
-    alignItems: 'center'
   }
-
 }));
 
 const style = {
@@ -291,12 +276,11 @@ export const HomePage = () => {
                  <CardActionArea >
                    <CardContent>
                      <Typography align='center' color={'#2980B9'} variant='h6'>{name}</Typography>
-                     <img src={image}  alt=''/><img src={image1} alt=''/><img src={image2} alt=''/><img src={image3} alt=''/><img src={image4} alt=''/>                     
-                    {/* <CardMedia 
-                       image={image}
-                       className={classes.cardmedia2}
-                     />      */}
-                           
+                     {image && <img src={image}  alt=''/>}
+                     {image1 && <img src={image1} alt=''/>}
+                     {image2 && <img src={image2} alt=''/>}
+                     {image3 && <img src={image3} alt=''/>}
+                     {image4 && <img src={image4} alt=''/>}                          
                    </CardContent>
                  </CardActionArea>
                </Card>
