@@ -41,15 +41,16 @@ const useStyles = makeStyles(theme => ({
     marginRight: 'auto'
   },
   container: {
-    marginTop: 100
+    marginTop: 50
   },
   container1: {
     alignItems: 'center',
     alignContent: 'center'  
   },
   card: {
-    maxWidth: 300,
-    height: 300,
+    maxWidth: 400,
+    height: '100%',
+    width: '100%',
     background: 'linear-gradient(45deg, #ffffff 10%, #A9CCE3 90%)'
   },
   card1: {
@@ -59,20 +60,20 @@ const useStyles = makeStyles(theme => ({
     background: 'linear-gradient(45deg, #ffffff 10%, #A9CCE3 90%)'
   },
   card2: {
-    maxWidth: 600,
-    width: 600,
-    height: 180,
+    maxWidth: '100%',
+    width: '100%',
+    height: '80%',
     background: 'linear-gradient(45deg, #ffffff 10%, #A9CCE3 90%)'
   },
   cardModal: {
-    maxWidth: 600,
-    width: 600,
-    height: 350,
+    maxWidth: '100%',
+    width: '100%',
+    height: '100%',
     background: 'linear-gradient(45deg, #ffffff 10%, #A9CCE3 90%)'
   },
   cardmedia: {
-    height: 200,
-    width: 200,
+    height: '90%',
+    width: '90%',
     paddingTop: '81.25%',
     borderRadius: '50%',
     margin: 'auto',
@@ -101,12 +102,13 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 700,
-    height: 650,
+    width: '90%',
+    height: '80%',
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
+    overflow: 'scroll'
   };
 
 export const HomePage = () => {
@@ -149,8 +151,7 @@ export const HomePage = () => {
       setImage2(data.sprites.front_female);
       setImage3(data.sprites.back_female);
       setImage4(data.sprites.front_shiny);
-      setName(data.name);
-      // setTypes(data.types);
+      setName(data.name.toUpperCase());
 
       let type = [];
       let abilities = [];
@@ -237,7 +238,7 @@ export const HomePage = () => {
     <br /><br />
       <Grid container spacing={2}>
           {filterPokemons().map(({id, name, pic, url}) => (
-               <Grid key={id} item xs={6} sm={3}>
+               <Grid key={id} item xs={12} sm={3}>
                <Card className={classes.card} raised={true}>
                  <CardActionArea onClick={() => handleOpen(url)}>
                    <CardContent>
@@ -245,22 +246,23 @@ export const HomePage = () => {
                        image={pic}
                        className={classes.cardmedia}
                      />
-                     <Typography align='center' variant='h6'>{name}</Typography>                     
+                     &nbsp;
+                     <Typography align='center' variant='h6' color={'#2980B9'}>{name.toUpperCase()}</Typography>                     
                    </CardContent>
                  </CardActionArea>
                </Card>
              </Grid>
           ))}
            <br /><br />
-              <div className={classes.div1}>
-        <Button variant="outlined" onClick={prevPage} startIcon={<ArrowBack />}>
-                Anteriores
-        </Button>
-        &nbsp;
-        <Button variant="contained" onClick={nextPage} endIcon={<ArrowForward />}>
-                Siguientes
-        </Button>
-        </div>
+            <div className={classes.div1}>
+                <Button variant="outlined" onClick={prevPage} startIcon={<ArrowBack />}>
+                        Anteriores
+                </Button>
+                &nbsp;
+                <Button variant="contained" onClick={nextPage} endIcon={<ArrowForward />}>
+                        Siguientes
+                </Button>
+            </div>
       </Grid>
         
       {
@@ -284,11 +286,11 @@ export const HomePage = () => {
           <Grid container spacing={2}>
 
           {pokemonDetail &&
-          <Grid item xs={12} sm={4} md={6}>
+          <Grid item xs={12}>
                <Card className={classes.card2} raised={true}>
                  <CardActionArea >
                    <CardContent>
-                     <Typography align='center' variant='h6'>{name}</Typography>
+                     <Typography align='center' color={'#2980B9'} variant='h6'>{name}</Typography>
                      <img src={image}  alt=''/><img src={image1} alt=''/><img src={image2} alt=''/><img src={image3} alt=''/><img src={image4} alt=''/>                     
                     {/* <CardMedia 
                        image={image}
@@ -300,14 +302,12 @@ export const HomePage = () => {
                </Card>
              
                &nbsp;
-
+               &nbsp;
              </Grid>
              }
-            </Grid>
-            <Grid container spacing={1}>
 
                 {pokemonDetail &&
-                <Grid item xs={12} sm={3} md={6}>
+                <Grid item xs={12}>
                     <Card className={classes.cardModal} raised={true}>
                     <CardActionArea >
                         <CardContent>
@@ -333,7 +333,7 @@ export const HomePage = () => {
                     </Card>
                 </Grid>
                 }
-                </Grid>
+            </Grid>
 
                 
           </Box>
