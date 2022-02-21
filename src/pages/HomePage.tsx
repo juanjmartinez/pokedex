@@ -218,7 +218,7 @@ export const HomePage = () => {
     </AppBar>
     <Container maxWidth='lg' component={Paper} elevation={4} className={classes.container}>
     <br />
-    <TextField className={classes.input} defaultValue="Small"  fullWidth value={search} onChange={onSearchChange} placeholder="Buscar"/>
+    <TextField className={classes.input} defaultValue="Small"  fullWidth value={search} onChange={onSearchChange} placeholder="Buscar" data-testId="searchbar"/>
     <br /><br />
       <Grid container spacing={4}>
           {filterPokemons().map(({id, name, pic, url}) => (
